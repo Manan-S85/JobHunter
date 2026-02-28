@@ -50,6 +50,9 @@ jobs:
           gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.RESUME_DECRYPT_PASS }}" --output resume.pdf Manansinh.pdf.gpg
 
       - name: Decode applicant context from secret
+=======
+      - name: Decode applicant context from secret
+>>>>>>> 05005d9 (removed gpg)
         run: |
           mkdir -p contexts
           echo "${{ secrets.CONTEXT_BASE64 }}" | base64 -d > contexts/profile.md
@@ -84,7 +87,7 @@ jobs:
           CONTACT_CODOLIO: ${{ secrets.CONTACT_CODOLIO }}
           RESUME_DRIVE_LINK: ${{ secrets.RESUME_DRIVE_LINK }}
           # --- Files (decoded above) ---
-          RESUME_FILE_PATH: ArinBalyan.pdf
+          RESUME_FILE_PATH: Manansinh.pdf
           CONTEXT_FILE_PATH: contexts/profile.md
           # --- Storage ---
           STORAGE_BACKEND: ${{ secrets.STORAGE_BACKEND }}
