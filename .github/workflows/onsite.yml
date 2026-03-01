@@ -49,7 +49,6 @@ jobs:
           gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.RESUME_DECRYPT_PASS }}" --output Manansinh.pdf Manansinh.pdf.gpg
 
       - name: Decode applicant context from secret
-      - name: Decode applicant context from secret
         run: |
           mkdir -p contexts
           echo "${{ secrets.CONTEXT_BASE64 }}" | base64 -d > contexts/profile.md
@@ -112,3 +111,4 @@ jobs:
           REJECT_TITLES: ${{ secrets.REJECT_TITLES }}
           EMAIL_FILTER_PATTERNS: ${{ secrets.EMAIL_FILTER_PATTERNS }}
           PYTHONWARNINGS: "ignore::DeprecationWarning"
+
