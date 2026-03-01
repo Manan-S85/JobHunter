@@ -43,11 +43,6 @@ jobs:
       - name: Install dependencies
         run: uv sync --no-dev
 
-      - name: Decrypt resume PDF
-        run: |
-          # Resume is committed as Manansinh.pdf.gpg
-          gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.RESUME_DECRYPT_PASS }}" --output Manansinh.pdf Manansinh.pdf.gpg
-
       - name: Decode applicant context from secret
         run: |
           mkdir -p contexts
@@ -107,8 +102,6 @@ jobs:
           FALLBACK_EMAIL_SUBJECT: ${{ secrets.FALLBACK_EMAIL_SUBJECT }}
           FALLBACK_EMAIL_BODY: ${{ secrets.ONSITE_FALLBACK_EMAIL_BODY }}
           # --- Filter ---
-
           REJECT_TITLES: ${{ secrets.REJECT_TITLES }}
           EMAIL_FILTER_PATTERNS: ${{ secrets.EMAIL_FILTER_PATTERNS }}
           PYTHONWARNINGS: "ignore::DeprecationWarning"
-
